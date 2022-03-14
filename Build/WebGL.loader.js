@@ -9,8 +9,7 @@ let loadingTitle = document.getElementById('loadingTitle');
 //Barra de progreso
 let progressBarLoading = document.getElementById('progress-bar-loading')
 let btnLoading = document.getElementById('btn-loading');
-let progressBarContainer = document.getElementById('progress-bar-container');
-
+let progressBarDiv = document.querySelector('.progressBarContainer');
 //-------------------------------------------------------------------------------
 /*Funcionalidad del boton de comenzar*/
 btnLoading.addEventListener('click' , () => {
@@ -36,8 +35,8 @@ function createUnityInstance(canvas, config, onProgress) {
     progressBarLoading.style.width = 100 * progress + "%";
     //Cuando se completo
     if(progress === 1){
-      progressBarContainer.display = 'hidden';
       btnLoading.style.display = 'inline';
+      progressBarDiv.style.display = 'none';
     }
   };
 
