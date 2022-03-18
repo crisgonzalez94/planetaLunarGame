@@ -15,13 +15,7 @@ let btnLoadingAndProgressBar = document.getElementById('btnLoadingAndProgressBar
 
 
 
-//-------------------------------------------------------------------------------
-/*Funcionalidad del boton de comenzar*/
-btnLoading.addEventListener('click' , () => {
-  //Aca debo quitar la pantalla de loading
-  loadingBar.style.display = 'none';
-  canvas.style.display = 'inline';
-})
+
 
 btnLoadingAndProgressBar.style.display = 'none';
 
@@ -459,3 +453,12 @@ function createUnityInstance(canvas, config, onProgress) {
     }
   });
 }
+
+
+//-------------------------------------------------------------------------------
+/*Funcionalidad del boton de comenzar*/
+btnLoading.addEventListener('click' , () => {
+  //Aca debo quitar la pantalla de loading
+  loadingBar.style.display = 'none';
+  canvas.style.display = 'inline';
+})
