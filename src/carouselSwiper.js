@@ -1,8 +1,9 @@
 var swiper = new Swiper(".mySwiper", {
     spaceBetween: 30,
+    effect: "fade",
     centeredSlides: true,
     autoplay: {
-      delay: 2500,
+      delay: 3750,
       disableOnInteraction: false,
     },
     pagination: {

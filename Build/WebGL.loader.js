@@ -10,25 +10,59 @@ let loadingTitle = document.getElementById('loadingTitle');
 let progressBarLoading = document.getElementById('progress-bar-loading')
 let btnLoading = document.getElementById('btn-loading');
 let progressBarDiv = document.querySelector('.progressBarContainer');
+let btnLoadingAndProgressBar = document.getElementById('btnLoadingAndProgressBarContainer');
+
+
+
+
 //-------------------------------------------------------------------------------
 /*Funcionalidad del boton de comenzar*/
 btnLoading.addEventListener('click' , () => {
   //Aca debo quitar la pantalla de loading
   loadingBar.style.display = 'none';
+  canvas.style.display = 'inline';
 })
 
+btnLoadingAndProgressBar.style.display = 'none';
+
+//Tambien deberemos verificar si ya ha entrado al sitio, por ende si ya tiene en cache el sitio... vamos guardar en el localstorage esa sesion
+if(localStorage.getItem('planetaLunarGame')){
+  //Ya ha iniciado
+  btnLoadingAndProgressBar.style.display = 'inline';
+  document.querySelector('.swiper').style.display = 'none';
+
+}else{
+  //Es la primera vez que inicia
+  //Guardamos la sesion para la proxima
+  localStorage.setItem('planetaLunarGame' , true);
+  document.querySelector('.swiper').style.opacity = '100%';
+
+
+  /*En el loading aparecen cuatro imagenes , cada imagen pasa cada 2,5 segundos,
+  entonces al pasar los segundos debe aparecer bien el loading o el boton si ya cargo... entonces
+  debemos controlar que hayan pasado esos 15 segundos*/
+  btnLoadingAndProgressBar.style.display = 'none';
+  setTimeout(()=>{
+    //Mostraremos el boton de comenzar o de loading
+    btnLoadingAndProgressBar.style.display = 'inline';
+    document.querySelector('.swiper').style.opacity = '0%';
+  },15000);
+
+}
 
 
 /*------------------------------------------------------------------------------------------------*/
-     /*Verificando si es mobile o si no*/
-     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+/*Verificando si es mobile o si no*/
+if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+  //Adaptamos fondo del loading
+  //Adaptamos canvas
+  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
 
-       canvas.height = window.innerHeight;
-       canvas.width = window.innerWidth;
-
-     } else {
-       canvas.height = window.innerHeight;
-     }
+} else {
+  //Si es escritorio solo adaptamos alto
+  canvas.height = window.innerHeight;
+}
 
 
 function createUnityInstance(canvas, config, onProgress) {
