@@ -13,6 +13,7 @@ let progressBarDiv = document.querySelector('.progressBarContainer');
 //-------------------------------------------------------------------------------
 /*Funcionalidad del boton de comenzar*/
 btnLoading.addEventListener('click' , () => {
+  //Aca debo quitar la pantalla de loading
   loadingBar.style.display = 'none';
 })
 
